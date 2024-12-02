@@ -4,14 +4,16 @@
             [clojure.string :as str]
             #?(:cljs [promesa.core :as p])))
 
-#?(:clj
-   (def input (->> (slurp (io/resource "aoc22/day01.txt"))
-                   (str/split-lines)
-                   (map parse-long)))
-   :cljs
-   (def input (await (p/->> (slurp "resources/aoc22/day01.txt")
-                            (str/split-lines)
-                            (map parse-long)))))
+; Question: https://adventofcode.com/2022/day/1
+
+#?(:clj (def input
+          (->> (slurp (io/resource "aoc22/day01.txt"))
+               (str/split-lines)
+               (map parse-long)))
+   :cljs (def input
+           (await (p/->> (slurp "resources/aoc22/day01.txt")
+                         (str/split-lines)
+                         (map parse-long)))))
 
 (defn part-1
   "Run with (n)bb -x aoc22.day01/part-1"
