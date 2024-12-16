@@ -26,7 +26,7 @@
        prn))
 
 (defn part-2
-  "Run with (n)bb -x aoc22.day02/part-2"
+  "Run with (n)bb -x aoc22.day01/part-2"
   [_]
   (->> input
        (partition-by nil?)
