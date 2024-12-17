@@ -8,31 +8,19 @@
 
 #?(:clj (def input
           (->> (slurp (io/resource "aoc22/day01.txt"))
-               (str/split-lines)
-               (map parse-long)))
+               (str/split-lines)))
    :cljs (def input
            (await (p/->> (slurp "resources/aoc22/day01.txt")
-                         (str/split-lines)
-                         (map parse-long)))))
+                         (str/split-lines)))))
 
 (defn part-1
   "Run with (n)bb -x aoc22.day01/part-1"
   [_]
   (->> input
-       (partition-by nil?)
-       (take-nth 2)
-       (map #(apply + %))
-       (apply max)
        prn))
 
 (defn part-2
   "Run with (n)bb -x aoc22.day01/part-2"
   [_]
   (->> input
-       (partition-by nil?)
-       (take-nth 2)
-       (map #(apply + %))
-       (sort-by -)
-       (take 3)
-       (apply +)
        prn))
