@@ -14,8 +14,6 @@
            (await (p/->> (slurp "resources/aoc24/day07.txt")
                          (s/split-lines)))))
 
-(def ^:private operators-1 [+ *])
-
 (def ^:private operator-combinations
   (memoize (fn [operators n]
              (case n
@@ -70,9 +68,13 @@
        (apply +)))
 
 (comment
-  (solution-vals-sum ["190: 10 19" "3267: 81 40 27" "83: 17 5" "156: 15 6"
+  (solution-vals-sum operators-2
+                     ["190: 10 19" "3267: 81 40 27" "83: 17 5" "156: 15 6"
                       "7290: 6 8 6 15" "161011: 16 10 13" "192: 17 8 14"
                       "21037: 9 7 18 13" "292: 11 6 16 20"]))
+
+(def ^:private operators-1 [+ *])
+
 (defn part-1
   "Run with (n)bb -x aoc24.day07/part-1"
   [_]
@@ -92,6 +94,8 @@
 (defn part-2
   "Run with (n)bb -x aoc24.day07/part-2"
   [_]
-  (prn (solution-vals-sum operators-2 input)))
+  (->> input
+       (solution-vals-sum operators-2)
+       prn))
 (comment
   (part-2 "a"))
